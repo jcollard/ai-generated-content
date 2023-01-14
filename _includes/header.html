@@ -3,7 +3,6 @@
       {% assign default_paths = site.pages | map: "path" %}
       {% assign page_paths = site.header_pages | default: default_paths %}
       <a class="h4 m-0 text-dark" href="{{ "/" | relative_url }}">
-        <img src="{{site.logo}}" width="32px" height="32px"/>
         {{ site.title | escape }}
       </a>
   
