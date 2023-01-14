@@ -1,0 +1,56 @@
+---
+layout: default
+---
+<article itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="pt-4 pb-3">
+    <h1 itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="text-secondary">
+      {% if page.author %}
+        {% if page.author_url %}
+          <a href="{{ page.author_url }}">
+        {% endif %}
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
+        {% if page.author_url %}
+          </a>
+        {% endif %}
+        &bull;
+      {% endif %}
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {% assign date_format = site.minima_reboot.date_format | default: "%b %-d, %Y" %}
+        {{ page.date | date: date_format }}
+      </time>
+    </p>
+  </header>
+
+  <div class="text-justify" itemprop="articleBody" id="content">
+    {{ content }}
+  </div>
+
+  <hr/>
+
+  <script src="https://giscus.app/client.js"
+  data-repo="jcollard/ai-generated-content"
+  data-repo-id="R_kgDOIxgDqg"
+  data-category="General"
+  data-category-id="DIC_kwDOIxgDqs4CTlVb"
+  data-mapping="title"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="en"
+  crossorigin="anonymous"
+  async>
+</script>
+
+<div style="text-align: center;">
+  <h3>Discussion Powered by <a href="https://giscus.app/client.js" target="_blank">giscus</a>!</h3>
+</div>
+ 
+
+  {% if site.disqus.shortname %}
+    {% include disqus_comments.html %}
+  {% endif %}
+</article>
